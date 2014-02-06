@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="actorSystemBean"
+          class="be.objectify.batch.concurrent.ActorSystemBean"
+          scope="singleton">
+        <constructor-arg value="ConcurrentBatchSystem"/>
+    </bean>
+
+    <bean id="masterPathFactory" class="be.objectify.batch.concurrent.ActorPathFactory">
+        <constructor-arg ref="actorSystemBean"/>
+    </bean>
+
+</beans>

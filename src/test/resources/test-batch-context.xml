@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <import resource="concurrent-batch-actor-system.xml"/>
+
+    <bean id="batchListener"
+          class="be.objectify.batch.concurrent.batch.BatchTestResultListener"
+          scope="prototype"/>
+
+    <bean id="testWorker"
+          class="be.objectify.batch.concurrent.batch.BatchTestWorker"
+          scope="prototype">
+        <constructor-arg index="0" name="masterPath" value="#{masterPathFactory.master()}"/>
+    </bean>
+
+    <bean id="jobActor"
+          class="be.objectify.batch.concurrent.batch.BatchTestJobActor"
+          scope="prototype">
+    </bean>
+
+</beans>
