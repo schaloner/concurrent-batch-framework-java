@@ -21,6 +21,10 @@ import be.objectify.batch.concurrent.protocol.job.NoRemainingWork;
 import be.objectify.batch.concurrent.protocol.job.WorkStatus;
 import be.objectify.batch.concurrent.protocol.listener.JobFinished;
 
+/**
+ *
+ * @author Steve Chaloner (steve@objectify.be)
+ */
 public abstract class AbstractJobActor extends UntypedActor {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(AbstractJobActor.class);

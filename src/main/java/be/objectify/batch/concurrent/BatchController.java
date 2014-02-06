@@ -12,6 +12,10 @@ import scala.concurrent.duration.Duration;
 
 import be.objectify.batch.concurrent.protocol.CheckForFinish;
 
+/**
+ *
+ * @author Steve Chaloner (steve@objectify.be)
+ */
 public class BatchController {
 
     private final ActorRef master;

@@ -16,6 +16,10 @@ import be.objectify.batch.concurrent.protocol.listener.WorkError;
 import be.objectify.batch.concurrent.protocol.listener.WorkQueueEmpty;
 import be.objectify.batch.concurrent.protocol.listener.WorkSuccess;
 
+/**
+ *
+ * @author Steve Chaloner (steve@objectify.be)
+ */
 public abstract class ResultListener extends UntypedActor {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ResultListener.class);

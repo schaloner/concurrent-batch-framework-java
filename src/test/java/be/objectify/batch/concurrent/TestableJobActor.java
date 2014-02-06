@@ -12,6 +12,10 @@ import be.objectify.batch.concurrent.protocol.job.JobHasMoreWork;
 import be.objectify.batch.concurrent.protocol.job.NoRemainingWork;
 import be.objectify.batch.concurrent.protocol.job.WorkStatus;
 
+/**
+ *
+ * @author Steve Chaloner (steve@objectify.be)
+ */
 public class TestableJobActor extends AbstractJobActor {
 
     private final int total = 100;

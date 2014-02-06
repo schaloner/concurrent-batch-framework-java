@@ -2,6 +2,10 @@ package be.objectify.batch.concurrent;
 
 import akka.actor.ActorPath;
 
+/**
+ *
+ * @author Steve Chaloner (steve@objectify.be)
+ */
 public class ActorPathFactory {
 
     private final ActorSystemBean actorSystemBean;

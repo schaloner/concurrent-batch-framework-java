@@ -3,6 +3,10 @@ package be.objectify.batch.concurrent.protocol.worker;
 import java.io.Serializable;
 import akka.actor.ActorRef;
 
+/**
+ *
+ * @author Steve Chaloner (steve@objectify.be)
+ */
 public abstract class AbstractWorkerMessage implements Serializable {
 
     private final ActorRef actorRef;

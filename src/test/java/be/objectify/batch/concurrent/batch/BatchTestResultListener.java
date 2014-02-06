@@ -9,6 +9,10 @@ import org.slf4j.LoggerFactory;
 
 import be.objectify.batch.concurrent.ResultListener;
 
+/**
+ *
+ * @author Steve Chaloner (steve@objectify.be)
+ */
 public class BatchTestResultListener extends ResultListener {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(BatchTestResultListener.class);

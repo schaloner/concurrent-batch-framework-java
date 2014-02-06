@@ -27,6 +27,10 @@ import be.objectify.batch.concurrent.BatchController;
 import be.objectify.batch.concurrent.protocol.listener.JobStatus;
 import be.objectify.batch.concurrent.protocol.listener.QueryJobStatus;
 
+/**
+ *
+ * @author Steve Chaloner (steve@objectify.be)
+ */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:/test-batch-context.xml")
 public class BatchControllerUnitTest implements ApplicationContextAware {

@@ -24,6 +24,10 @@ import be.objectify.batch.concurrent.protocol.master.WorkToBeDone;
 import be.objectify.batch.concurrent.protocol.worker.WorkerCreated;
 import be.objectify.batch.concurrent.protocol.worker.WorkerRequestsWork;
 
+/**
+ *
+ * @author Steve Chaloner (steve@objectify.be)
+ */
 public class Master extends UntypedActor {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(Master.class);

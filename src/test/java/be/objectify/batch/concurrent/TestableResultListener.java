@@ -2,6 +2,10 @@ package be.objectify.batch.concurrent;
 
 import akka.actor.ActorRef;
 
+/**
+ *
+ * @author Steve Chaloner (steve@objectify.be)
+ */
 public class TestableResultListener extends ResultListener {
 
     @Override

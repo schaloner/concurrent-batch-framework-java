@@ -13,6 +13,10 @@ import be.objectify.batch.concurrent.protocol.listener.WorkError;
 import be.objectify.batch.concurrent.protocol.listener.WorkSuccess;
 import be.objectify.batch.concurrent.protocol.master.WorkToBeDone;
 
+/**
+ *
+ * @author Steve Chaloner (steve@objectify.be)
+ */
 public class BatchTestWorker extends Worker {
 
     public BatchTestWorker(ActorPath masterPath) {

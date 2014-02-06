@@ -6,6 +6,10 @@ import akka.actor.ActorRef;
 import akka.dispatch.Futures;
 import scala.concurrent.Future;
 
+/**
+ *
+ * @author Steve Chaloner (steve@objectify.be)
+ */
 public class TestableWorker extends Worker {
 
     public TestableWorker(ActorPath masterPath) {
