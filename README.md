@@ -6,4 +6,4 @@ It's a purely message-driven architecture, with an asynchronous work feed.
 
 Don't even think about using this in production. 
 
-There is some Spring integration, but it's theere as an example. 
+There is some Spring integration, but it's there as an example.
