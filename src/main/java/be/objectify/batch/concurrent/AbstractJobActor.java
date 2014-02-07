@@ -69,10 +69,12 @@ public abstract class AbstractJobActor extends UntypedActor
             {
                 LOGGER.info("[Active] Work loaded, becoming idle");
                 getContext().become(idle);
-            } else if (message instanceof CheckJobForWork)
+            }
+            else if (message instanceof CheckJobForWork)
             {
                 LOGGER.info("[Active] Loading work, ignoring message");
-            } else if (message instanceof JobHasMoreWork)
+            }
+            else if (message instanceof JobHasMoreWork)
             {
                 LOGGER.info("[Active] More work is available");
                 system.actorSelection(system.child("batchListener"))
@@ -80,7 +82,8 @@ public abstract class AbstractJobActor extends UntypedActor
                             self());
                 LOGGER.info("[Active] Becoming idle");
                 getContext().become(idle);
-            } else if (message instanceof NoRemainingWork)
+            }
+            else if (message instanceof NoRemainingWork)
             {
                 LOGGER.info("[Active] No remaining work");
                 system.actorSelection(system.child("batchListener"))
@@ -88,10 +91,12 @@ public abstract class AbstractJobActor extends UntypedActor
                             self());
                 LOGGER.info("[Active] Becoming idle");
                 getContext().become(idle);
-            } else if (message instanceof LoadWork)
+            }
+            else if (message instanceof LoadWork)
             {
                 LOGGER.info("[Active] We're already loading work, learn patience");
-            } else
+            }
+            else
             {
                 onCustomMessage(message);
             }
@@ -117,19 +122,22 @@ public abstract class AbstractJobActor extends UntypedActor
                               system.dispatcher())
                         .to(self(),
                             sender());
-            } else if (message instanceof JobHasMoreWork)
+            }
+            else if (message instanceof JobHasMoreWork)
             {
                 LOGGER.info("[Idle] More work is available");
                 system.actorSelection(system.child("batchListener"))
                       .tell(message,
                             self());
-            } else if (message instanceof NoRemainingWork)
+            }
+            else if (message instanceof NoRemainingWork)
             {
                 LOGGER.info("[Idle] No remaining work");
                 system.actorSelection(system.child("batchListener"))
                       .tell(JobFinished.INSTANCE,
                             self());
-            } else if (message instanceof LoadWork)
+            }
+            else if (message instanceof LoadWork)
             {
                 LOGGER.info("[Idle] More work available, dispatching into system");
                 LoadWork loadWork = (LoadWork) message;
@@ -161,7 +169,8 @@ public abstract class AbstractJobActor extends UntypedActor
                                   dispatcher);
                 LOGGER.info("[Idle] Becoming active");
                 getContext().become(active);
-            } else
+            }
+            else
             {
                 onCustomMessage(message);
             }

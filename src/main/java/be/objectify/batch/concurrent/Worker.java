@@ -61,13 +61,16 @@ public abstract class Worker extends UntypedActor
             if (message instanceof WorkIsReady)
             {
                 LOGGER.info("Work is ready, but I'm already working.  Ignoring request");
-            } else if (message instanceof NoWorkToBeDone)
+            }
+            else if (message instanceof NoWorkToBeDone)
             {
                 LOGGER.info("No work to be done.  Ignoring request");
-            } else if (message instanceof WorkToBeDone)
+            }
+            else if (message instanceof WorkToBeDone)
             {
                 LOGGER.info("I've been given work, but I'm already busy.  This is not good.");
-            } else if (message instanceof WorkComplete)
+            }
+            else if (message instanceof WorkComplete)
             {
                 final WorkComplete workComplete = (WorkComplete) message;
                 LOGGER.info("Finished work with result [{}]",
@@ -92,7 +95,8 @@ public abstract class Worker extends UntypedActor
                 LOGGER.info("Requesting work");
                 master.tell(new WorkerRequestsWork(self()),
                             self());
-            } else if (message instanceof WorkToBeDone)
+            }
+            else if (message instanceof WorkToBeDone)
             {
                 final WorkToBeDone workToBeDone = (WorkToBeDone) message;
                 LOGGER.info("Got work: [{}]",
@@ -105,7 +109,8 @@ public abstract class Worker extends UntypedActor
                                        .dispatcher())
                         .to(self());
                 getContext().become(active);
-            } else if (message instanceof NoWorkToBeDone)
+            }
+            else if (message instanceof NoWorkToBeDone)
             {
                 LOGGER.info("Requested work, but none available");
             }

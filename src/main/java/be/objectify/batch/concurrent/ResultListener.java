@@ -35,24 +35,30 @@ public abstract class ResultListener extends UntypedActor
             final WorkSuccess workSuccess = (WorkSuccess) message;
             onSuccess(workSuccess.getWork(),
                       workSuccess.getMessage());
-        } else if (message instanceof WorkError)
+        }
+        else if (message instanceof WorkError)
         {
             final WorkError workError = (WorkError) message;
             onError(workError.getWork(),
                     workError.getMessage());
-        } else if (message instanceof WorkQueueEmpty)
+        }
+        else if (message instanceof WorkQueueEmpty)
         {
             onQueueEmpty(system.actorFor(system.child("jobActor")));
-        } else if (message instanceof JobHasMoreWork)
+        }
+        else if (message instanceof JobHasMoreWork)
         {
             onLoadWork(system.actorFor(system.child("jobActor")));
-        } else if (message instanceof JobFinished)
+        }
+        else if (message instanceof JobFinished)
         {
             onJobFinished();
-        } else if (message instanceof QueryJobStatus)
+        }
+        else if (message instanceof QueryJobStatus)
         {
             onQueryJobStatus(message);
-        } else
+        }
+        else
         {
             onCustomMessage(message);
         }

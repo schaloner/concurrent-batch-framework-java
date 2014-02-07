@@ -71,7 +71,8 @@ public class Master extends UntypedActor
             workers.put(worker,
                         Option.<Tuple2<ActorRef, Object>>empty());
             notifyWorkers();
-        } else if (message instanceof WorkerRequestsWork)
+        }
+        else if (message instanceof WorkerRequestsWork)
         {
             final WorkerRequestsWork workerRequestsWork = (WorkerRequestsWork) message;
             final ActorRef worker = workerRequestsWork.getActorRef();
@@ -82,7 +83,8 @@ public class Master extends UntypedActor
                     final ActorRef self = self();
                     worker.tell(NoWorkToBeDone.INSTANCE,
                                 self);
-                } else
+                }
+                else
                 {
                     final Option<Tuple2<ActorRef, Object>> currentWork = workers.get(worker);
                     if (currentWork.isEmpty())
@@ -95,7 +97,8 @@ public class Master extends UntypedActor
                     }
                 }
             }
-        } else if (message instanceof WorkIsDone)
+        }
+        else if (message instanceof WorkIsDone)
         {
             final WorkIsDone workIsDone = (WorkIsDone) message;
             final ActorRef worker = workIsDone.getActorRef();
@@ -103,12 +106,14 @@ public class Master extends UntypedActor
             {
                 LOGGER.error("[{}] said it's done work but we didn't know about it",
                              worker);
-            } else
+            }
+            else
             {
                 workers.put(worker,
                             Option.<Tuple2<ActorRef, Object>>empty());
             }
-        } else if (message instanceof Terminated)
+        }
+        else if (message instanceof Terminated)
         {
             final Terminated terminated = (Terminated) message;
             final ActorRef worker = terminated.actor();
@@ -124,7 +129,8 @@ public class Master extends UntypedActor
                             currentWork._1());
             }
             workers.remove(worker);
-        } else if (message instanceof WorkRequest)
+        }
+        else if (message instanceof WorkRequest)
         {
             final WorkRequest workRequest = (WorkRequest) message;
             LOGGER.info("Enqueuing [{}]",
@@ -132,7 +138,8 @@ public class Master extends UntypedActor
             workQueue.add(new Tuple2<ActorRef, Object>(sender(),
                                                        workRequest.getWork()));
             notifyWorkers();
-        } else if (message instanceof List)
+        }
+        else if (message instanceof List)
         {
             final List list = (List) message;
             LOGGER.info("Enqueuing [{}] items",
@@ -143,17 +150,14 @@ public class Master extends UntypedActor
                                                            object));
             }
             notifyWorkers();
-        } else if (message instanceof CheckForFinish)
+        }
+        else if (message instanceof CheckForFinish)
         {
             boolean empty = workQueue.isEmpty();
-            synchronized (workers)
+            for (Iterator<Option<Tuple2<ActorRef, Object>>> iterator = workers.values().iterator(); empty && iterator
+                    .hasNext(); )
             {
-                for (Iterator<Option<Tuple2<ActorRef, Object>>> iterator = workers.values()
-                                                                                  .iterator(); empty && iterator.hasNext(); )
-                {
-                    empty = iterator.next()
-                                    .isEmpty();
-                }
+                empty = iterator.next().isEmpty();
             }
             if (empty)
             {
@@ -161,7 +165,8 @@ public class Master extends UntypedActor
                 resultListener.tell(WorkQueueEmpty.INSTANCE,
                                     self());
             }
-        } else
+        }
+        else
         {
             unhandled(message);
         }
